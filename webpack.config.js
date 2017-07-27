@@ -8,7 +8,6 @@ module.exports = {
 		'webpack/hot/only-dev-server',
 		'bootstrap-loader',
 		'./src'
-
 	],
 	output: {
 		path: path.join(__dirname, 'public'),
