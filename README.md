@@ -1,4 +1,5 @@
 # todoapp
-download or clone, made sure you have mongo running and node installed.
+download or clone, make sure you have mongo running and node installed.
 
-wefet
+navigate to directory in terminal and run
+``` npm run dev ```
