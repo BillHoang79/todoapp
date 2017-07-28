@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (module, bootstrapVersion, bootstrapPath) {
-  var scriptsPath = parseInt(bootstrapVersion, 10) === 3 ? ['assets', 'javascripts', 'bootstrap'] : ['dist', 'js', 'umd'];
+  var scriptsPath = parseInt(bootstrapVersion, 10) === 3 ? ['assets', 'javascripts', 'bootstrap'] : ['js', 'dist'];
   var bootstrapModule = _path2.default.join.apply(_path2.default, [bootstrapPath].concat(scriptsPath, [module]));
   return 'require (' + JSON.stringify(bootstrapModule) + ');';
 };
