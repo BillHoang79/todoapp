@@ -1,6 +1,6 @@
 import _ from 'lodash'; 
 
-export default function($scope, todoFactory){
+export default ($scope, todoFactory) => {
 	let params = {
 		createHasInput: false
 	};

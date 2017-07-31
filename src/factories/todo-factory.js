@@ -5,26 +5,30 @@ const todoFactory = angular.module('app.todoFactory', [])
 
 .factory('todoFactory', ($http) => {
 
-	function onCompletedClick($scope, todo) {
+	let onCompletedClick = ($scope, todo) => {
 		todo.isCompleted = !todo.isCompleted;
 	}
 
-	function onEditClick($scope, todo) {
+	/*function onCompletedClick($scope, todo) {
+		todo.isCompleted = !todo.isCompleted;
+	}*/
+
+	let onEditClick = ($scope, todo) => {
 		todo.isEditing = true;
 		todo.updatedTask = todo.task;
 	}
 
-	function onCancelClick($scope, todo) {
+	let onCancelClick = ($scope, todo) => {
 		todo.isEditing = false;
 	}
 
-	function getTasks($scope) {
+	let getTasks = $scope => {
 		$http.get('/todos').success(response => {
 			$scope.todos = response.todos;
 		}); 
 	}
 
-	function createTask($scope, params) {
+	let createTask = ($scope, params) => {
 		if (!$scope.createTaskInput) { return; }
 
 		$http.post('/todos',{
@@ -40,7 +44,7 @@ const todoFactory = angular.module('app.todoFactory', [])
 		//$scope.createTaskInput = '';
 	}
 
-	function updateTask($scope, todo) {
+	let updateTask = ( $scope, todo) => {
 		$http.put(`/todos/${todo._id}`, { task: todo.updatedTask }).success(response => {
 			getTasks($scope);
 			todo.isEditing = false;
@@ -50,7 +54,7 @@ const todoFactory = angular.module('app.todoFactory', [])
 		//todo.isEditing = false;
 	}
 
-	function deleteTask($scope, todoToDelete) {
+	let deleteTask = ($scope, todoToDelete) => {
 		$http.delete(`/todos/${todoToDelete._id}`).success(response => {
 			getTasks($scope);
 		});
@@ -58,7 +62,7 @@ const todoFactory = angular.module('app.todoFactory', [])
 		//_.remove($scope.todos, todo => todo.task === todoToDelete.task);
 	}
 
-	function watchCreateTaskInput(params, $scope, val) { 
+	let watchCreateTaskInput = (params, $scope, val) => { 
 		const createHasInput = params.createHasInput;
 
 		if (!val && createHasInput) {
