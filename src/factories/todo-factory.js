@@ -4,6 +4,20 @@ import angular from 'angular';
 const todoFactory = angular.module('app.todoFactory', [])
 
 .factory('todoFactory', ($http) => {
+
+	function onCompletedClick($scope, todo) {
+		todo.isCompleted = !todo.isCompleted;
+	}
+
+	function onEditClick($scope, todo) {
+		todo.isEditing = true;
+		todo.updatedTask = todo.task;
+	}
+
+	function onCancelClick($scope, todo) {
+		todo.isEditing = false;
+	}
+
 	function getTasks($scope) {
 		$http.get('/todos').success(response => {
 			$scope.todos = response.todos;
@@ -59,6 +73,9 @@ const todoFactory = angular.module('app.todoFactory', [])
 	}
 
 	return { 
+		onCompletedClick,
+		onEditClick,
+		onCancelClick,
 		getTasks,
 		createTask,
 		updateTask,
