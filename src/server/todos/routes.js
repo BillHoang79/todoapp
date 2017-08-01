@@ -3,35 +3,35 @@ var Todo = require('server/db/db').Todo;
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res) {
-	Todo.find(function(err, results) {
+router.get('/', (req, res) => {
+	Todo.find((err, results) => {
 		if (err) { console.log(err); }
 	
 		res.send({ todos: results });
 	}); 
 });
 
-router.post('/', function(req, res) {
+router.post('/', (req, res) => {
 	var todo = new Todo(req.body);
-	todo.save(function(err) {
+	todo.save(err => {
 		if (err) { console.log(err); }
 
 		res.send('Todo Saved')
 	});
 }); 
 
-router.put('/:id', function(req, res) {
+router.put('/:id', (req, res) => {
 	var id = req.params.id;
 	Todo.update({ _id: mongoose.Types.ObjectId(id) }, {
 		$set: { task: req.body.task }
-	}, function(err) {
+	}, err => {
 		if (err) { console.log (err); }
 
 		res.send('Todo Updated');
 	});
 });
 
-router.delete('/:id', function(req, res) {
+router.delete('/:id', (req, res) => {
 	var id = req.params.id;
 	Todo.remove({ _id: mongoose.Types.ObjectId(id) }, function(err) {
 		if (err) { console.log(err); }
@@ -41,8 +41,3 @@ router.delete('/:id', function(req, res) {
 });
 
 module.exports = router; 
-
-
-
-
-

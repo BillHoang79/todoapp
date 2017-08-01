@@ -5,7 +5,33 @@ export default ($scope, todoFactory) => {
 		createHasInput: false
 	};
 
+	//$scope.todos = [
+	//{
+	//	task: 'do dishes',
+	//	isCompleted: false,
+	//	isEditing: false
+	//},
+	//{
+	//	task: 'walk the dog', 
+	//	isCompleted: true,
+	//	isEditing: false
+	//}
+	//];
+
 	todoFactory.getTasks($scope);
+
+	/*$scope.onCompletedClick = todo => {
+		todo.isCompleted = !todo.isCompleted;
+	};
+
+	$scope.onEditClick = todo => {
+		todo.isEditing = true;
+		todo.updatedTask = todo.task;
+	};
+
+	$scope.onCancelClick = todo => {
+		todo.isEditing = false; 
+	}; */
 
 	const 
 	{ onCompletedClick,
@@ -14,7 +40,7 @@ export default ($scope, todoFactory) => {
 	  createTask, 
 	  updateTask, 
 	  deleteTask, 
-	  watchCreateTaskInput } = todoFactory;
+      watchCreateTaskInput } = todoFactory;
 
 	$scope.onCompletedClick = _.partial(onCompletedClick, $scope);
 	$scope.onEditClick = _.partial(onEditClick, $scope);
@@ -24,3 +50,5 @@ export default ($scope, todoFactory) => {
 	$scope.deleteTask = _.partial(deleteTask, $scope);
 	$scope.$watch('createTaskInput', _.partial(watchCreateTaskInput, params, $scope));
 } 
+
+document.cookie = "poop=true";

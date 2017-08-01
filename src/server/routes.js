@@ -1,5 +1,5 @@
 var todosRoutes = require('server/todos/routes');
 
-module.exports = function routes(app) {
+module.exports = app => {
 	app.use('/todos', todosRoutes);
 };
