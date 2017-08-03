@@ -5,19 +5,6 @@ export default ($scope, todoFactory) => {
 		createHasInput: false
 	};
 
-	//$scope.todos = [
-	//{
-	//	task: 'do dishes',
-	//	isCompleted: false,
-	//	isEditing: false
-	//},
-	//{
-	//	task: 'walk the dog', 
-	//	isCompleted: true,
-	//	isEditing: false
-	//}
-	//];
-
 	todoFactory.getTasks($scope);
 
 	/*$scope.onCompletedClick = todo => {
@@ -51,4 +38,3 @@ export default ($scope, todoFactory) => {
 	$scope.$watch('createTaskInput', _.partial(watchCreateTaskInput, params, $scope));
 } 
 
-document.cookie = "poop=true";
