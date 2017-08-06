@@ -24,16 +24,3 @@ export default ($scope, todoFactory) => {
 	$scope.deleteTask = _.partial(deleteTask, $scope);
 	$scope.$watch('createTaskInput', _.partial(watchCreateTaskInput, params, $scope));
 } 
-
-document.cookie = "user=bill";
-
-var Login = (function(){
-    var isUserLoggedIn = function (){
-        return document.cookie.match(/user/i);
-    };
-
-    return {
-        loggedIn: isUserLoggedIn
-    }
-
-}());
