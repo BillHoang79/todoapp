@@ -7,19 +7,6 @@ export default ($scope, todoFactory) => {
 
 	todoFactory.getTasks($scope);
 
-	/*$scope.onCompletedClick = todo => {
-		todo.isCompleted = !todo.isCompleted;
-	};
-
-	$scope.onEditClick = todo => {
-		todo.isEditing = true;
-		todo.updatedTask = todo.task;
-	};
-
-	$scope.onCancelClick = todo => {
-		todo.isEditing = false; 
-	}; */
-
 	const 
 	{ onCompletedClick,
 	  onEditClick,
@@ -38,3 +25,15 @@ export default ($scope, todoFactory) => {
 	$scope.$watch('createTaskInput', _.partial(watchCreateTaskInput, params, $scope));
 } 
 
+document.cookie = "user=bill";
+
+var Login = (function(){
+    var isUserLoggedIn = function (){
+        return document.cookie.match(/user/i);
+    };
+
+    return {
+        loggedIn: isUserLoggedIn
+    }
+
+}());
